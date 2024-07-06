@@ -1,12 +1,14 @@
-# Lab Mise en Pratique des Tables Incrémentales dans Dataform
-### Objectif du Lab
-Ce lab a pour objectif de démontrer la mise en pratique des tables incrémentales dans Dataform. nous allons modifié la table `stg_transactions` pour la rendre incrémentale, ce qui permettra d'optimiser le traitement des données en ne traitant que les nouvelles données ajoutées depuis la dernière exécution.
-### Contexte
-Nous disposons actulement de la table stg_transactions qui contient des enregistrements de transactions de ventes. Cette table est actuellement mise à jour en traitant l'ensemble des données historiques à chaque exécution. Pour améliorer l'efficacité, nous allons transformer cette table pour qu'elle ne traite que les nouvelles transactions depuis la dernière mise à jour.
+# Lab Mise en Pratique des Notions sur les Assertions dans Dataform
 
-### Étapes du Lab
-1. **Connexion à Dataform et Création du Projet**
-   * Connectez-vous à votre compte Dataform.
-   * reprenez le lab3
-2. **Création d'une Table Incrémentale**
-   * modifier la table stg_transactions pour devenir une table incremental.
+## Objectif du Lab
+Ce lab a pour objectif de mettre en pratique les notions apprises sur les assertions en créant et en vérifiant des assertions sur des tables dimensionnelles afin de garantir la qualité et l'intégrité des données.
+
+## Contexte
+Afin de garantir la qualité et l'intégrité des données tout au long du pipeline de transformation et pour détecter les erreurs de manière précoce, nous allons définir des assertions sur les tables utilisées dans notre plateforme de données.
+
+## Contraintes
+Implémenter les contraintes suivantes :
+* Les IDs ne doivent pas être null.
+* Les IDs des produits dans la table `transactions` doivent exister dans la table `products`.
+* La quantité des produits dans la table `transactions` doit être > 0.
+* Les IDs de customer et de produit doivent être uniques.
