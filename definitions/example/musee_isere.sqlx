@@ -1,7 +1,11 @@
 config {
     type: "table",
     description: "Isere museum table",
-    tags: ["STAGING"],
+    tags: ["STAGING","museume"],
+    assertions: {
+        nonNull: ["adresse"],
+        rowConditions:['NOT REGEXP_CONTAINS(identifiant_musee, r"^M\d{4}$")']
+    }
 }
 
 SELECT

@@ -1,0 +1,12 @@
+config {
+    type: "assertion",
+    tags: ["museume"]
+}
+
+SELECT
+  "Lieu museum is null" AS failing_row_condition,
+  *
+FROM
+  `formation-dataform.lab5.musee_isere`
+WHERE
+  lieu IS NULL
