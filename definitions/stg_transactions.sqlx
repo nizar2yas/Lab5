@@ -1,0 +1,24 @@
+config {
+    type: "table",
+    tags: ["STAGING"],
+    schema: "retailer_staging",
+    columns: docs.transactions_doc,
+    description: "Transactions' staging data"
+}
+
+SELECT
+  SAFE_CAST(transaction_id AS INT64) AS transaction_id,
+  SAFE_CAST(customer_id AS INT64) AS customer_id,
+  SAFE_CAST(product_id AS INT64) AS product_id,
+  SAFE_CAST(quantity AS INT64) AS quantity,
+  SAFE_CAST(unite_price AS INT64) AS unite_price,
+  SAFE_CAST(transaction_date AS date) AS transaction_date,
+  payment_method,
+  status,
+  SAFE_CAST(created_at AS date) AS creation_date,
+  SAFE_CAST(updated_at AS date) AS update_date,
+FROM
+  ${ref("transactions")}
+WHERE
+  status = "completed"
+  AND payment_method IS NOT NULL

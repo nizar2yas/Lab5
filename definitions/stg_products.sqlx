@@ -1,0 +1,19 @@
+config {
+    type: "table",
+    schema: "retailer_staging",
+    tags: ["STAGING"],
+    columns: docs.products_doc,
+    description: "product' staging data"
+}
+
+SELECT
+  SAFE_CAST(product_id AS INT64) AS product_id,
+  product_name,
+  description,
+  SAFE_CAST(price AS FLOAT64) AS price,
+  category,
+  SAFE_CAST(supplier_id AS INT64) AS supplier_id,
+  SAFE_CAST(created_at AS DATE) AS created_at,
+  SAFE_CAST(updated_at AS DATE) AS updated_at
+FROM
+  ${ref("products")}

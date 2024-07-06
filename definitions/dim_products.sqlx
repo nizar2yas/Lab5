@@ -1,0 +1,12 @@
+config {
+    type: "table",
+    schema: "retailer_dim",
+    tags: ["DIM"]
+}
+
+SELECT
+  *,
+  current_timestamp() AS technical_operation_date
+FROM
+  ${ref("stg_products")}
+QUALIFY ROW_NUMBER() OVER(PARTITION BY product_id ORDER BY updated_at DESC)=1

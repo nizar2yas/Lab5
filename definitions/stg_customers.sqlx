@@ -1,0 +1,23 @@
+config {
+    type: "table",
+    schema: "retailer_staging",
+    tags: ["STAGING"],
+    columns: docs.customers_doc,
+    description: "Customer' staging data"
+}
+
+SELECT
+  SAFE_CAST(customer_id AS INT64) AS customer_id,
+  first_name,
+  last_name,
+  email,
+  phone_number,
+  address,
+  city,
+  state,
+  SAFE_CAST(postal_code AS INT64) AS postal_code,
+  country,
+  SAFE_CAST(created_at AS DATE) AS created_at,
+  SAFE_CAST(updated_at AS DATE) AS updated_at
+FROM
+  ${ref("customers")}

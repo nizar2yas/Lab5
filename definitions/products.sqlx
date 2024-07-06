@@ -1,0 +1,20 @@
+config {
+    type: "operations",
+    hasOutput: true,
+    schema: constants.raw_schema,
+    tags: ["LOAD_DATA"]
+}
+
+LOAD DATA OVERWRITE
+  ${self()} ( 
+    product_id	STRING,
+    product_name	STRING,
+    description	STRING,
+    price	STRING,
+    category	STRING,
+    supplier_id	STRING,
+    created_at	STRING,
+    updated_at	STRING
+    )
+FROM FILES ( format = "CSV",
+    uris = ["gs://${dataform.projectConfig.vars.gsc_source_path}/product.csv"] );

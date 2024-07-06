@@ -12,3 +12,6 @@ Implémenter les contraintes suivantes :
 * Les IDs des produits dans la table `transactions` doivent exister dans la table `products`.
 * La quantité des produits dans la table `transactions` doit être > 0.
 * Les IDs de customer et de produit doivent être uniques.
+
+## Dependences
+* rendre les tables `dim` et `fct`dependante de la assertions des tables sources
