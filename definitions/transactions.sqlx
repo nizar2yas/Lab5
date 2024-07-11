@@ -1,5 +1,0 @@
-config {
-    type: "declaration",
-    database: "dataform-424018",
-    schema: constants.raw_schema,
-}
