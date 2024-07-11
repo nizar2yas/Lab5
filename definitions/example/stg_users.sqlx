@@ -17,8 +17,13 @@ config {
             "type": "staging"
         },
         partitionBy: "Date(update_timestamp)",
-        requirePartitionFilter: true,
         clusterBy: ["gender"]
+    },
+    assertions: {
+        nonNull: ["id"],
+        uniqueKey: ["id"],
+        //uniqueKeys:[["id"],["first_name","last_name"]],
+        rowConditions: ['gender in ("Female","Agender","Male")']
     }
 }
 

@@ -1,0 +1,11 @@
+config {
+    type: "assertion"
+}
+
+SELECT
+  "user not adulte" as failing_row_condition,
+  *
+FROM
+  ${ref("stg_users")}
+WHERE
+  DATE_DIFF(CURRENT_DATE(),birth_date, YEAR)<18
