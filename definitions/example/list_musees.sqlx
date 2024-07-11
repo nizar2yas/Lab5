@@ -4,19 +4,19 @@ config {
     schema: "input_data"
 }
 
-LOAD data overwrite ${self()} (
-identifiant_musee	STRING,
-region_administrative	STRING,
-departement	STRING,
-commune	STRING,
-nom_officiel_du_musee	STRING,
-adresse	STRING,
-lieu	STRING,
-code_postal	STRING,
-telephone	STRING,
-url	STRING,
-latitude	STRING,
-longitude	STRING,
-ref_deps	STRING
-)
-FROM FILES(format ="CSV", uris = ["gs://dataform_input_data/liste-officielle-museesdf-20220127-data.csv"])
+LOAD DATA OVERWRITE
+  ${self()} ( identifiant_musee STRING,
+    region_administrative STRING,
+    departement STRING,
+    commune STRING,
+    nom_officiel_du_musee STRING,
+    adresse STRING,
+    lieu STRING,
+    code_postal STRING,
+    telephone STRING,
+    url STRING,
+    latitude STRING,
+    longitude STRING,
+    ref_deps STRING )
+FROM FILES(format ="CSV",
+    uris = ["gs://dataform_input_data/liste-officielle-museesdf-20220127-data.csv"])
